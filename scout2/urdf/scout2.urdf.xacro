@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="scout2">
+
+    <!-- Material und Interial Matrix-->
+    <xacro:include filename="material.xacro"/>
+    
+    <!-- load raw rover-->
+
+    <xacro:include filename="rover.xacro"/>
+    <xacro:include filename="joints.xacro"/>
+
+    <!-- load cam and lidar -->
+    <xacro:include filename="camera.xacro"/>
+    
+    <xacro:include filename="lidar.xacro"/>
+
+</robot>

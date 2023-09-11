@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- LIDAR -->
+
+    <link name="chassis_lidar_block">
+        <visual>
+            <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.03 0.105 0.05" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.025" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.03 0.105 0.05" />
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="0.03" l="0.03" w="0.105" h="0.05"
+            xyz="0.0 0.0 0.025" rpy="0 0 0" />
+    </link>
+
+    <link name="lidar">
+        <visual>
+            <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.03" />
+            </geometry>
+            <material name="red" />
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.03" />
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia m="0.2" r="0.05" h="0.03"
+                           xyz="0.0 0.0 0.015" rpy="0 0 0"/> 
+    </link>
+
+    <joint name="chassis_lidar" type="fixed">
+        <parent link="chassis_main" />
+        <child link="chassis_lidar_block" />
+        <origin xyz="0.045 0.0 0.12" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="mount_lidar" type="fixed">
+        <parent link="chassis_lidar_block" />
+        <child link="lidar" />
+        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0" />
+    </joint>
+
+</robot>

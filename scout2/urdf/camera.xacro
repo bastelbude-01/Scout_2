@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+     <!-- Camera -->
+
+     <link name="camholder_1">
+        <visual>
+            <origin xyz="0.0 0.0 0.0015" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.04 0.005"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0015" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.04 0.005"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="0.01" l="0.1" w="0.04" h="0.005"
+                           xyz="0.0 0.0 0.0015" rpy="0 0 0"/> 
+    </link>
+
+    <link name="camholder_2">
+        <visual>
+            <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.01 0.04 0.04"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.01 0.04 0.04"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="0.01" l="0.01" w="0.04" h="0.04"
+                           xyz="0.0 0.0 0.02" rpy="0 0 0"/> 
+    </link>        
+
+    <!-- Joint now Fixed but later Moving -->
+
+    <joint name="move_cam_joint" type="fixed">   
+        <parent link="chassis_front_cylinder"/>
+        <child link="camholder_1"/>
+        <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+    </joint>
+<!-- 
+    <joint name="joint_3" type="revolute">
+        <parent link="chassis_front_cylinder"/>
+        <child link="camholder_1"/>
+        <axis xyz="0 0 0"/>
+        <limit lower="${-pi/4}" upper="${pi/4}" velocity="50.0" effort="1000.0"/>
+        <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+    </joint>  -->    
+
+    <joint name="camholder_main" type="fixed">
+        <parent link="camholder_1"/>
+        <child link="camholder_2"/>
+        <origin xyz="0.04 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- Braucht noch virtuellen link für die camera und gazebo plugins-->
+
+</robot>

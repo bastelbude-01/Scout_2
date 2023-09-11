@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Joints_Fixed -->
+
+    <joint name="base_footprint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0.0 0.0 0.085" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <!-- Wheels-->
+
+    <joint name="chassi_1" type="fixed">
+        <parent link="base_link" />
+        <child link="wheel_holder_right" />
+        <origin xyz="0.0 -0.035 -0.02" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="chassi_2" type="fixed">
+        <parent link="base_link" />
+        <child link="wheel_holder_left" />
+        <origin xyz="0.0 0.035 -0.02" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="deko_1" type="fixed">
+        <parent link="wheel_right" />
+        <child link="wheel_deko_right" />
+        <origin xyz="0.0 -0.045 0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="deko_2" type="fixed">
+        <parent link="wheel_left" />
+        <child link="wheel_deko_left" />
+        <origin xyz="0.0 0.045 0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <!-- Chassi-->
+
+    <joint name="chassi_base" type="fixed">
+        <parent link="base_link" />
+        <child link="chassis_main" />
+        <origin xyz="-0.08 0.0 0.02" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="chassi_base_top" type="fixed">
+        <parent link="chassis_main" />
+        <child link="chassis_main_top" />
+        <origin xyz="-0.05 0.0 0.07" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="chassi_base_cylinder" type="fixed">
+        <parent link="chassis_main" />
+        <child link="chassis_tail_cylinder" />
+        <origin xyz="-0.16 0 0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="chassi_front_cylinder" type="fixed">
+        <parent link="chassis_main" />
+        <child link="chassis_front_cylinder" />
+        <origin xyz="0.135 0 0.07" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="chassi_casterWheel_cylinder" type="fixed">
+        <parent link="chassis_tail_cylinder" />
+        <child link="chassis_casterWheel_cylinder" />
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="casterWheel" type="fixed">
+        <parent link="chassis_casterWheel_cylinder" />
+        <child link="caster_wheel" />
+        <origin xyz="0 0 -0.09" rpy="0.0 0.0 0.0" />
+    </joint>
+
+
+    <!-- Moving Joints -->
+
+    <joint name="joint_1" type="revolute">
+        <parent link="wheel_holder_right" />
+        <child link="wheel_right" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0" />
+        <origin xyz="0 -0.1 0" rpy="0 0 0" />
+    </joint>
+
+    <joint name="joint_2" type="revolute">
+        <parent link="wheel_holder_left" />
+        <child link="wheel_left" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0" />
+        <origin xyz="0 0.1 0" rpy="0 0 0" />
+    </joint>
+
+</robot>
