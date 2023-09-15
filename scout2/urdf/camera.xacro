@@ -20,6 +20,9 @@
         <xacro:box_inertia m="0.01" l="0.1" w="0.04" h="0.005"
                            xyz="0.0 0.0 0.0015" rpy="0 0 0"/> 
     </link>
+    <gazebo reference="camholder_1">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <link name="camholder_2">
         <visual>
@@ -37,7 +40,10 @@
         </collision>
         <xacro:box_inertia m="0.01" l="0.01" w="0.04" h="0.04"
                            xyz="0.0 0.0 0.02" rpy="0 0 0"/> 
-    </link>        
+    </link>  
+    <gazebo reference="camholder_2">
+        <material>Gazebo/Black</material>
+    </gazebo>      
 
     <!-- Joint now Fixed but later Moving -->
 

@@ -21,6 +21,9 @@
         <xacro:box_inertia m="0.5" l="0.025" w="0.15" h="0.02"
             xyz="0.0 0.0 0.01" rpy="0 0 0" />
     </link>
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <!--  WHEELS AND DEKO -->
     <xacro:macro name="wh_link" params="prefix y">
@@ -41,6 +44,9 @@
             <xacro:cylinder_inertia m="0.3" r="0.03" h="0.1"
                 xyz="0 ${y} 0" rpy="0 0 0" />
         </link>
+        <gazebo reference="wheel_holder_${prefix}">
+            <material>Gazebo/Black</material>
+        </gazebo>
     </xacro:macro>
 
     <xacro:wh_link prefix="right" y="-0.05" />
@@ -64,7 +70,11 @@
             <xacro:cylinder_inertia m="0.3" r="0.0625" h="0.045"
                 xyz="0 ${y} 0" rpy="0 0 0" />
         </link>
+        <gazebo reference="wheel_${prefix}">
+            <material>Gazebo/Black</material>
+        </gazebo>
     </xacro:macro>
+
     <xacro:wheel_link prefix="right" y="-0.0225" />
     <xacro:wheel_link prefix="left" y="0.0225" />
 
@@ -87,6 +97,9 @@
             <xacro:cylinder_inertia m="0.01" r="0.025" h="0.001"
                 xyz="0 0 0" rpy="1.57 0.0 0.0" />
         </link>
+        <gazebo reference="wheel_deko_${prefix}">
+            <material>Gazebo/White</material>
+        </gazebo>
     </xacro:macro>
 
     <xacro:wheel_deko prefix="right" />
@@ -111,6 +124,9 @@
         <xacro:box_inertia m="0.5" l="0.32" w="0.105" h="0.07"
             xyz="0.0 0.0 0.035" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_main">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
     <link name="chassis_main_top">
         <visual>
@@ -129,6 +145,9 @@
         <xacro:box_inertia m="0.2" l="0.22" w="0.105" h="0.05"
             xyz="0.0 0.0 0.025" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_main_top">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
     <link name="chassis_tail_cylinder">
         <visual>
@@ -147,6 +166,9 @@
         <xacro:cylinder_inertia m="0.2" r="0.0525" h="0.12"
             xyz="0.0 0.0 0.06" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_tail_cylinder">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
     <link name="chassis_front_cylinder">
         <visual>
@@ -165,6 +187,9 @@
         <xacro:cylinder_inertia m="0.2" r="0.06" h="0.025"
             xyz="0.0 0.0 -0.0125" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_front_cylinder">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
     <link name="chassis_casterWheel_cylinder">
         <visual>
@@ -183,6 +208,9 @@
         <xacro:cylinder_inertia m="0.05" r="0.015" h="0.09"
             xyz="0.0 0.0 -0.045" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_casterWheel_cylinder">
+        <material>Gazebo/Orange</material>
+    </gazebo>
 
     <link name="caster_wheel">
         <visual>
@@ -201,4 +229,7 @@
         <xacro:sphere_inertia m="0.1" r="0.015"
             xyz="0 0 0" rpy="0 0 0" />
     </link>
+    <gazebo reference="caster_wheel">        
+        <material>Gazebo/Black</material>
+    </gazebo>
 </robot>

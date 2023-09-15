@@ -20,6 +20,9 @@
         <xacro:box_inertia m="0.03" l="0.03" w="0.105" h="0.05"
             xyz="0.0 0.0 0.025" rpy="0 0 0" />
     </link>
+    <gazebo reference="chassis_lidar_block">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
     <link name="lidar">
         <visual>
@@ -38,6 +41,9 @@
         <xacro:cylinder_inertia m="0.2" r="0.05" h="0.03"
                            xyz="0.0 0.0 0.015" rpy="0 0 0"/> 
     </link>
+    <gazebo reference="lidar">
+        <material>Gazebo/Red</material>
+    </gazebo>
 
     <joint name="chassis_lidar" type="fixed">
         <parent link="chassis_main" />
