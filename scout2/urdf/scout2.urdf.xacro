@@ -14,4 +14,8 @@
     
     <xacro:include filename="lidar.xacro"/>
 
+    <!-- load gazebo -->
+
+    <xacro:include filename="gazebo.xacro"/>
+
 </robot>
