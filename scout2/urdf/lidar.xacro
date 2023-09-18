@@ -41,8 +41,35 @@
         <xacro:cylinder_inertia m="0.2" r="0.05" h="0.03"
                            xyz="0.0 0.0 0.015" rpy="0 0 0"/> 
     </link>
+    
     <gazebo reference="lidar">
         <material>Gazebo/Red</material>
+        <sensor name="laser" type="ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0.00</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>6</max>
+                </range>
+            </ray>
+            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>--ros-args --remap ~/out:=scan</argument> <!-- - -ros-args - -remap ~/out:=scan -->
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>laser_frame</frame_name>
+            </plugin>
+        </sensor>
     </gazebo>
 
     <joint name="chassis_lidar" type="fixed">
