@@ -72,6 +72,8 @@
         </link>
         <gazebo reference="wheel_${prefix}">
             <material>Gazebo/Black</material>
+            <mu1 value="0.001" />
+            <mu2 value="0.001" />
         </gazebo>
     </xacro:macro>
 
@@ -229,7 +231,9 @@
         <xacro:sphere_inertia m="0.1" r="0.015"
             xyz="0 0 0" rpy="0 0 0" />
     </link>
-    <gazebo reference="caster_wheel">        
+    <gazebo reference="caster_wheel">
         <material>Gazebo/Black</material>
+        <mu1 value="0.001" />
+        <mu2 value="0.001" />
     </gazebo>
 </robot>
