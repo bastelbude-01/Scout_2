@@ -14,8 +14,10 @@
     
     <xacro:include filename="lidar.xacro"/>
 
-    <!-- load gazebo -->
+    <!-- load gazebo 
 
-    <xacro:include filename="gazebo.xacro"/>
+    <xacro:include filename="gazebo.xacro"/> -->
+
+    <xacro:include filename="ros2_control.xacro"/>
 
 </robot>
